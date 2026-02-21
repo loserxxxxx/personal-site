@@ -2,23 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Personal Downloader</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f4f4f4; }
-        .card { background: white; padding: 2rem; border-radius: 8px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        input { width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-        button { padding: 10px 20px; background: #e62117; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ggglaive</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
-        <h2>YouTube to MP4</h2>
-        <form action="/download" method="POST">
-            <input type="text" name="url" placeholder="Paste YouTube link here..." required>
-            <button type="submit">Download</button>
-        </form>
-        <p><small>For personal use cuz other downloaders suck</small></p>
+
+    <video autoplay muted loop playsinline webkit-playsinline id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+    </video>
+    <div class="vignette"></div>
+
+    <div id="enter-screen">
+        <div class="enter-text">click ^o^</div>
     </div>
+
+    <main id="main-content">
+        <div class="center-container">
+            
+            <h1 class="main-title">^w^</h1>
+            
+            <p class="subtitle">20(03)</p>
+
+            <div class="minimal-socials">
+                
+                <a href="https://open.spotify.com/user/31u5jdkkvnk22xtz4ufto74shy4a?si=b993b014bf9c4b40" target="_blank" class="icon-wrap spotify">
+                    <i class="fab fa-spotify"></i> 
+                </a>
+
+                <a href="https://x.com/x_xmrrrp" target="_blank" class="icon-wrap x">
+                    <i class="fab fa-twitter"></i> 
+                </a>
+
+                <a href="https://instagram.com/p4rkrqwq" target="_blank" class="icon-wrap instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://discord.gg/63EPxJ9rfj" target="_blank" class="icon-wrap discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
-
