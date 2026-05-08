@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="SEMATARY GRAVE MAN">
+    <meta name="description" content="@3135zzz on twitter">
+    <meta name="theme-color" content="#ff0022"> 
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sematary.lol">
+    <meta property="og:title" content="SEMATARY GRAVE MAN">
+    <meta property="og:description" content="@3135zzz on twitter.">
+    <meta property="og:image" content="https://sematary.lol/pfp.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sematary.lol/">
+    <meta property="twitter:title" content="SEMATARY GRAVE MAN">
+    <meta property="twitter:description" content="@3135zzz on twitter">
+    <meta property="twitter:image" content="https://sematary.lol/pfp.jpg">
+    <title>SEMATARY</title>
+    <style>
+        /* Color Palette & Base Styles - EDGY RED THEME */
+        :root {
+            --bg-color: #050000;
+            --term-red: #ff0022;
+            --dim-red: #55000b;
+            --accent-color: #ffffff;
+            --border-color: #330008;
+            --panel-bg: #0a0002;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--term-red);
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* Subtle CRT scanline effect across the whole page */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        a {
+            color: var(--term-red);
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        /* Container & Header */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            padding: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+        }
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--term-red);
+    background: #110000; 
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden; /* Keeps the image inside the border */
+    position: relative;
+}
+
+/* Add this new rule right below .profile-pic to style the actual image */
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents the image from looking stretched/squished */
+    display: block;
+    opacity: 0.85; /* Drops the brightness slightly to fit the dark vibe */
+    filter: grayscale(20%) contrast(120%); /* Adds a slightly raw, edgy filter to the photo */
+}
+
+        .title-block h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            line-height: 1;
+            /* Glitchy/edgy text shadow */
+            text-shadow: 2px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.2);
+        }
+
+        .subtitle {
+            color: var(--dim-red);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Marquee / Ticker */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #030000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .nav a.active {
+            background-color: var(--dim-red);
+            color: var(--accent-color);
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        /* Minimalist Bento Box Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .bento-item {
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+        .row-span-2 { grid-row: span 2; }
+
+        .panel-header {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            border-bottom: 1px dotted var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .panel-header::before {
+            content: "† ";
+            color: var(--term-red);
+        }
+
+        /* Track List (Releases) */
+        .track-list {
+            list-style: none;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .track-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .track-year { color: var(--dim-red); }
+        
+        .track-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .tag {
+            border: 1px solid var(--dim-red);
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            color: var(--dim-red);
+            text-transform: uppercase;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: none;
+            border: 1px solid var(--term-red);
+            color: var(--term-red);
+            padding: 3px 10px;
+            cursor: pointer;
+            font-family: inherit;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .play-btn:hover {
+            background: var(--term-red);
+            color: #000;
+            box-shadow: 0 0 8px var(--term-red);
+        }
+
+        /* News Section */
+        .news-item {
+            margin-bottom: 15px;
+        }
+        
+        .news-date {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Sidebar Elements */
+        .visitor-counter {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid var(--dim-red);
+            padding: 10px;
+            letter-spacing: 5px;
+            color: var(--term-red);
+            text-shadow: 0 0 10px rgba(255, 0, 34, 0.8);
+            background: #000;
+        }
+
+        .visitor-since {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--dim-red);
+            margin-top: 5px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-list li::before {
+            content: "× ";
+            color: var(--dim-red);
+            font-weight: bold;
+        }
+
+        /* Top Tracks List */
+        .top-tracks {
+            list-style-type: decimal;
+            padding-left: 20px;
+            color: var(--dim-red);
+        }
+        
+        .top-tracks li {
+            margin-bottom: 10px;
+        }
+
+        .top-tracks li span {
+            color: var(--term-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .span-2, .span-3, .row-span-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<header class="header">
+    <div class="profile-pic">
+        <img src="pfp.jpg" alt="Sematary">
+    </div>
+    <div class="title-block">
+        <h1>SEMATARY<br>GRAVE MAN</h1>
+            <div class="subtitle">[ witch house • real black metal ]</div>
+            <div class="stats">× 890k MONTHLY LISTENERS ×</div>
+        </div>
+    </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            @3135zzz , @semadaily on twitter :3
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#" class="active">HOME</a>
+        <a href="./about">ABOUT</a>
+        <a href="./discog">DISCOGRAPHY</a>
+    </nav>
+
+    <main class="bento-grid">
+        
+        <div class="bento-item span-2 row-span-2">
+            <div class="panel-header">LATEST RELEASE</div>
+            <ul class="track-list">
+                <li class="track-item">
+                    <div class="track-info">
+                        <span class="track-year">2026</span>
+                        <span class="track-title">RAGING WOLF</span>
+                    </div>
+                    <div class="track-actions">
+                        <span class="tag">SINGLE</span>
+                        <a href="https://open.spotify.com/track/4Ln2vkwyWjnUolcx4OxwcX?si=61452b346db8477e" class="play-btn">▶ play</a>
+                    </div>
+                </li>
+                <li class="track-item">
+                    <div class="track-info">
+                        <span class="track-year">2026</span>
+                        <span class="track-title">Dyer Lane</span>
+                    </div>
+                    <div class="track-actions">
+                        <span class="tag">SINGLE</span>
+                        <a href="https://open.spotify.com/album/6Q8pMBMxWktXS4zCJD9ijq?si=pQknlxYDTEidxL7weIC4hg" class="play-btn">▶ play</a>
+                    </div>
+                </li>
+                <li class="track-item">
+                    <div class="track-info">
+                        <span class="track-year">2026</span>
+                        <span class="track-title">ERRYWHERE</span>
+                    </div>
+                    <div class="track-actions">
+                        <span class="tag">SINGLE</span>
+                        <a href="https://open.spotify.com/album/2nrz43884d3men0mEcJ1RE?si=35s3IMKISTilIfzkipr4MA" class="play-btn">▶ play</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="bento-item">
+            <div class="panel-header">LISTEN</div>
+            <ul class="sidebar-list">
+                <li><a href="https://open.spotify.com/artist/1GLnyPuL45vOsZPs5iANcC?si=3TKjo30dRBq0nokbeHz7rg" target="_blank">Spotify</a></li>
+                <li><a href="https://soundcloud.com/SEMATARYY" target="_blank">SoundCloud</a></li>
+                <li><a href="https://music.apple.com/us/artist/sematary/1469648917" target="_blank">Apple Music</a></li>
+                <li><a href="https://www.youtube.com/channel/UCwIoSxq95KDqAjl-wBc3QSQ" target="_blank">YouTube</a></li>
+            </ul>
+        </div>
+
+        <div class="bento-item">
+            <div class="panel-header">FOLLOW</div>
+            <ul class="sidebar-list">
+                <li><a href="https://x.com/sematarygravemn" target="_blank">X @SEMATARYGRAVEMN</a></li>
+                <li><a href="https://instagram.com/sematary" target="_blank">IG @sematary</a></li>
+            </ul>
+        </div>
+
+        <div class="bento-item span-2">
+            <div class="panel-header">NEWS</div>
+            <div class="news-item">
+                <span class="news-date">may 2026</span> - 5.7.26 NTS Drop
+            </div>
+            <div class="news-item">
+                <span class="news-date">apr 2026</span> - RAGING WOLF Drop
+            </div>
+            <div class="news-item">
+                <span class="news-date">apr 2026</span> - 800k Monthly Spotify Listeners for the first time DIY
+            </div>
+            <div class="news-item">
+                <span class="news-date">oct 2025</span> - HAUNT-O-HOLIXXX THE MIXTAPE Drop
+            </div>
+        </div>
+
+        <div class="bento-item span-3">
+            <div class="panel-header">TOP TRACKS</div>
+            <ol class="top-tracks">
+                <li><span>Bunny Suit Feat. Ghost Mountain</span></li>
+                <li><span>Haunted Mound Reapers Feat. Hackle</span></li>
+                <li><span>Slaughter House</span></li>
+                <li><span>World's a Fuck Feat. Ghost Mountain</span></li>
+                <li><span>Funeral Feat. Ghost Mountain</span></li>
+            </ol>
+        </div>
+
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counterElement = document.getElementById('counter');
+        let currentCount = 1398253; // Fallback default
+
+        // 1. Fetch initial count from database.json
+        fetch('database.json')
+            .then(response => response.json())
+            .then(data => {
+                if(data && data.views) {
+                    currentCount = data.views;
+                    counterElement.textContent = currentCount.toLocaleString('en-US');
+                }
+            })
+            .catch(error => console.log("Local database.json not found, using default view count."));
+
+        // 2. Retain the original fake tick and glitch effect logic
+        setInterval(() => {
+            // Randomly decide if a new "visitor" arrives
+            if (Math.random() > 0.4) {
+                currentCount += Math.floor(Math.random() * 3) + 1;
+                counterElement.textContent = currentCount.toLocaleString('en-US');
+            }
+            
+            // Random glitch effect on the text shadow occasionally
+            if (Math.random() > 0.8) {
+                counterElement.style.textShadow = `0 0 ${Math.random() * 15 + 5}px rgba(255, 0, 34, 1)`;
+            } else {
+                counterElement.style.textShadow = `0 0 10px rgba(255, 0, 34, 0.8)`;
+            }
+        }, 3500); 
+    });
+</script>
+
+</body>
+</html>

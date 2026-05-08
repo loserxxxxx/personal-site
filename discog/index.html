@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISCOGRAPHY | SEMATARY</title>
+    <style>
+        /* Color Palette & Base Styles - EDGY RED THEME */
+        :root {
+            --bg-color: #050000;
+            --term-red: #ff0022;
+            --dim-red: #55000b;
+            --accent-color: #ffffff;
+            --border-color: #330008;
+            --panel-bg: #0a0002;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--term-red);
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* Subtle CRT scanline effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        a {
+            color: var(--term-red);
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        /* Container & Header */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            padding: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--term-red);
+            background: #110000; 
+            box-shadow: inset 0 0 10px #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            filter: grayscale(20%) contrast(120%);
+        }
+
+        .title-block h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            line-height: 1;
+            text-shadow: 2px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.2);
+        }
+
+        .subtitle {
+            color: var(--dim-red);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Marquee / Ticker */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #030000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .nav a.active {
+            background-color: var(--dim-red);
+            color: var(--accent-color);
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        /* Minimalist Bento Box Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .bento-item {
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .span-3 { grid-column: span 3; }
+
+        /* Coming Soon Specifics */
+        .coming-soon-box {
+            text-align: center;
+            padding: 100px 20px;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .coming-soon-text {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.2);
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            color: var(--term-red);
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; text-shadow: 0 0 10px var(--term-red); }
+            100% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .span-3 {
+                grid-column: span 1;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <div class="profile-pic">
+            <img src="pfp.jpg" alt="Sematary">
+        </div>
+        <div class="title-block">
+            <h1>SEMATARY<br>GRAVE MAN</h1>
+            <div class="subtitle">[ witch house • real black metal ]</div>
+            <div class="stats">× 890k MONTHLY LISTENERS ×</div>
+        </div>
+    </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            @3135zzz, @semadaily on twitter :3
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="/">HOME</a>
+        <a href="/about">ABOUT</a>
+        <a href="index.html" class="active">DISCOGRAPHY</a>
+    </nav>
+
+    <main class="bento-grid">
+        
+        <!-- Coming Soon Box (Spans full width) -->
+        <div class="bento-item span-3 coming-soon-box">
+            <div class="coming-soon-text">COMING SOON</div>
+            <div class="loading-text">[ compiling records... ]</div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>

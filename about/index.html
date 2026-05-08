@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT | SEMATARY</title>
+    <style>
+        /* Color Palette & Base Styles - EDGY RED THEME */
+        :root {
+            --bg-color: #050000;
+            --term-red: #ff0022;
+            --dim-red: #55000b;
+            --accent-color: #ffffff;
+            --border-color: #330008;
+            --panel-bg: #0a0002;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--term-red);
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* Subtle CRT scanline effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        a {
+            color: var(--term-red);
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+
+        /* Container & Header */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            padding: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--term-red);
+            background: #110000; 
+            box-shadow: inset 0 0 10px #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            filter: grayscale(20%) contrast(120%);
+        }
+
+        .title-block h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            line-height: 1;
+            text-shadow: 2px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.2);
+        }
+
+        .subtitle {
+            color: var(--dim-red);
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Marquee / Ticker */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #030000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: ticker 25s linear infinite;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .nav a.active {
+            background-color: var(--dim-red);
+            color: var(--accent-color);
+            padding: 0 5px;
+            font-weight: bold;
+        }
+
+        /* Minimalist Bento Box Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .bento-item {
+            border: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+        .row-span-2 { grid-row: span 2; }
+
+        .panel-header {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            border-bottom: 1px dotted var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .panel-header::before {
+            content: "† ";
+            color: var(--term-red);
+        }
+
+        /* Paragraphs inside panels */
+        .bento-item p {
+            margin-bottom: 15px;
+        }
+        
+        .bento-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .italic-dim {
+            color: var(--dim-red);
+            font-style: italic;
+        }
+
+        /* Sidebar Elements */
+        .visitor-counter {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid var(--dim-red);
+            padding: 10px;
+            letter-spacing: 5px;
+            color: var(--term-red);
+            text-shadow: 0 0 10px rgba(255, 0, 34, 0.8);
+            background: #000;
+        }
+
+        .visitor-since {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--dim-red);
+            margin-top: 5px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-list li::before {
+            content: "× ";
+            color: var(--dim-red);
+            font-weight: bold;
+        }
+
+        /* Content Image */
+        .content-image {
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--term-red);
+            margin-bottom: 10px;
+            object-fit: cover;
+            filter: grayscale(40%) contrast(150%);
+        }
+
+        .image-caption {
+            font-size: 0.75rem;
+            color: var(--dim-red);
+            text-align: center;
+            width: 150px;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .span-2, .span-3, .row-span-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <div class="profile-pic">
+            <img src="./pfp.jpg" alt="Sematary">
+        </div>
+        <div class="title-block">
+            <h1>SEMATARY<br>GRAVE MAN</h1>
+            <div class="subtitle">[ witch house • real black metal ]</div>
+            <div class="stats">× 890k MONTHLY LISTENERS ×</div>
+        </div>
+    </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            @3135zzz, @semadaily on twitter :3
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="/">HOME</a>
+        <a href="index.html" class="active">ABOUT</a>
+        <a href="/discog">DISCOGRAPHY</a>
+    </nav>
+
+    <main class="bento-grid">
+        
+        <!-- Main About Section (Spans 2 columns) -->
+        <div class="bento-item span-2">
+            <div class="panel-header">ABOUT SEMATARY</div>
+            
+            <!-- Optional embedded image for the bio -->
+            <img src="./pfp.jpg" alt="Bedroom" class="content-image">
+            <div class="image-caption">butcher house. 808s. poison.</div>
+
+            <p>Sematary, is an American rapper, songwriter, and producer from Northern California. He began releasing music and founded the Haunted Mound rap collective in 2019.</p>
+            
+            
+            <p>The debut mixtape <span class="highlight">Grave House</span> (2019) was the start — raw sounding witch house, <span class="highlight">Rainbow Bridge 3</span> (2021) expanded the sound. <span class="highlight">Butcher House</span> (2023) was the biggest year yet singles pouring out constantly, With Known collabs with Hackle, Buckshot, and Black Kray.</p>
+            
+            <p>2026: still going dumb. RAGING WOLF out now.</p>
+        </div>
+
+        <div class="bento-item">
+            <div class="panel-header">LISTEN</div>
+            <ul class="sidebar-list">
+                <li><a href="YOUR_LINK_HERE" target="_blank">Spotify</a></li>
+                <li><a href="YOUR_LINK_HERE" target="_blank">SoundCloud</a></li>
+                <li><a href="YOUR_LINK_HERE" target="_blank">Apple Music</a></li>
+                <li><a href="YOUR_LINK_HERE" target="_blank">YouTube</a></li>
+            </ul>
+        </div>
+
+        <!-- The Sound Section --
+
+        <!-- Right Sidebar Middle: Follow & Contact -->
+        <div class="bento-item">
+            <div class="panel-header">FOLLOW</div>
+            <ul class="sidebar-list">
+                <li><a href="https://x.com/sematarygravemn" target="_blank">X @SEMATARYGRAVEMN</a></li>
+                <li><a href="https://instagram.com/sematary" target="_blank">IG @sematary</a></li>
+            </ul>
+        </div>
+
+        <!-- Collaborators Section -->
+        <div class="bento-item span-2">
+            <div class="panel-header">COLLABORATORS</div>
+            <p>Regular collaborators include <span class="highlight">Ghost Mountain</span>, <span class="highlight">Anvil</span>, <span class="highlight">hackle</span>, <span class="highlight">buckshot</span>, and <span class="highlight">oscar18</span>. Tracks like "Haunted Mound Reapers", "Bunny Suit" and "World's a Fuck" were built with them.</p>
+        </div>
+
+        <!-- Right Sidebar Bottom: Friends / Affiliates -->
+
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counterElement = document.getElementById('counter');
+        let currentCount = 1398253; // Fallback default
+
+        // Fetch initial count from database.json to keep it synced with index.html
+        fetch('database.json')
+            .then(response => response.json())
+            .then(data => {
+                if(data && data.views) {
+                    currentCount = data.views;
+                    counterElement.textContent = currentCount.toLocaleString('en-US');
+                }
+            })
+            .catch(error => console.log("Local database.json not found, using default view count."));
+
+        // Retain the fake tick and glitch effect logic
+        setInterval(() => {
+            if (Math.random() > 0.4) {
+                currentCount += Math.floor(Math.random() * 3) + 1;
+                counterElement.textContent = currentCount.toLocaleString('en-US');
+            }
+            
+            if (Math.random() > 0.8) {
+                counterElement.style.textShadow = `0 0 ${Math.random() * 15 + 5}px rgba(255, 0, 34, 1)`;
+            } else {
+                counterElement.style.textShadow = `0 0 10px rgba(255, 0, 34, 0.8)`;
+            }
+        }, 3500); 
+    });
+</script>
+
+</body>
+</html>
